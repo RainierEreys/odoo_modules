@@ -3,8 +3,9 @@
     'name': "odoo_framework",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+       Este modulo esta hecho para agregar campos a un modelo ya existente y 
+        colocarlo en la vista de contactos, especificamente en la pestaña 'Datos adicionales'
+        """,
 
     'description': """
         Este modulo esta hecho para agregar campos a un modelo ya existente y 
