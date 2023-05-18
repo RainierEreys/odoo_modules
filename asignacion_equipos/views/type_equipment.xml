@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <!--VISTA DE TIPO ARBOL-->
+        <record id="equipment_tree" model="ir.ui.view">
+            <field name="name">equipment.tree</field>
+            <field name="model">type.equipment</field>
+            <field name="arch" type="xml">
+                <tree string="Nombre de equipo">
+                    <field name="name"/>
+                    <field name="date_create"/>
+                    <field name="codigo"/>
+                    
+                </tree>
+            </field>
+        </record>
+        <!--VISTA DE TIPO FORMULARIO-->
+        <record id="equipment_form" model="ir.ui.view">
+            <field name="name">equipment.form</field>
+            <field name="model">type.equipment</field>
+            <field name="arch" type="xml">
+                <form string="Nombre de equipo">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_create"/>
+                            <field name="codigo" readonly="1" />
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_equipment" model="ir.actions.act_window">
+            <!--Nombre de la ventana-->
+            <field name="name">Tipo de equipos</field>
+            <!--A qué modelo referencia-->
+            <field name="res_model">type.equipment</field>
+            <!--Qué tipo de vista me va a llamar-->
+            <field name="view_mode">tree,form</field>
+            <!--Mientras que no tenga contenido aparecerá la carita sonriendo-->
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crear un nuevo equipo.
+                </p>
+            </field>
+        </record>
+
+    
+    </data>
+    
+
+</odoo>

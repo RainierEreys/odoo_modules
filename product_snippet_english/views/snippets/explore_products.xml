@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Estructura del bloque del Snippet-->
+    <template id="explore_products" name="Explore products">
+        <section class="explore_products">
+            <div class="container">
+                <div class="text-center py-5">
+                    <h2 class="h1">Explore Products and Contacts</h2>
+                    <p>Snippet para explorar productos</p>
+                </div>
+
+                <!-- Elementos referenciales para traer el Snippet -->
+                <div class="row justify-content-center" id="products-row"/>
+                <div class="row contact" id="contact"/>
+
+                
+            </div>
+        </section>
+    </template>    
+
+    <!--Estructura del snippet en panel de "Lista de Snippets"-->
+    <template id="custom_snippets" inherit_id="website.snippets" name="Custom Snippets">
+        <xpath expr="//div[@id='snippet_structure']" position="before">
+            <div id="snippet_structure" class="o_panel">
+                <div class="o_panel_header">YourHome</div>
+                <div class="o_panel_body">
+                    <t t-snippet="product_snippet_english.explore_products">
+                        <keywords>explore, products, contact</keywords>
+                    </t>
+                   
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

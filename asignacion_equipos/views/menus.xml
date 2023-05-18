@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+            id="menu_asignment_equipment"
+            name="Asignacion de equipos"
+            web_icon="asignacion_equipos,static/description/icon.png"
+            sequence="10"
+        />
+
+        <menuitem 
+            id="menu_asignment_report_main"
+            name="Asignación de equipos"
+            parent="menu_asignment_equipment"
+            sequence="20"
+        />
+
+        <menuitem 
+            id="menu_asignment_equipment_1"
+            name="Registro de equipos"
+            parent="menu_asignment_report_main"
+            action="action_equipment"
+            sequence="20"
+        />
+    </data>
+</odoo>

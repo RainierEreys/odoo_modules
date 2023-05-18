@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--CREACIÓN DE UN NUEVO PAPEL PARA LAS FACTURAS-->
+    <record id="ticket_paper_format" model="report.paperformat">
+        <field name="name">Facturación: Formato ticket</field>
+        <!--HAY VARIOS FORMATO EN ODOO (VERIFICAR EN FORMATO DE PAPEL)-->
+        <field name="format">custom</field>
+        <!--ALTURA (YA EL SISTEMA ENTIENDE QUE ES EN MM)-->
+        <field name="page_height">1024</field>
+        <!--ANCHURA (YA EL SISTEMA ENTIENDE QUE ES EN MM)-->
+        <field name="page_width">80</field>
+        <!--ORIENTACIÓN (VERIFICAR VALORES CREANDO UN FORMATO EN LA INTERFAZ)-->
+        <field name="orientation">Portrait</field>
+
+        <!--MÁRGENES-->
+        <field name="margin_top">1</field>
+        <field name="margin_bottom">1</field>
+        <field name="margin_left">1</field>
+        <field name="margin_right">1</field>
+ 
+        <!--LINEA DE CABECERA (SE DEFINE ASÍ PORQUE ES BOOLEAN, NO SE INSERTA SU VALOR)-->
+        <field name="header_line" eval="False"/>
+        <!--ESPACIO DE CABECERA-->
+        <field name="header_spacing">0</field>
+        <!--RECOMENDABLE QUE ESTÉ SIEMPRE EN 90-->
+        <field name="dpi">90</field>
+    </record>
+    <!--CREACIÓN DE OTRO TIPO DE PAPEL PARA LAS FACTURAS-->
+    <record id="a4_paper_format" model="report.paperformat">
+        <field name="name">Facturación: A4</field>
+        
+        <field name="format">A4</field>
+        
+        <field name="page_height">0</field>
+
+        <field name="page_width">0</field>
+        
+        <field name="orientation">Portrait</field>
+
+        
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+ 
+        
+        <field name="header_line" eval="False"/>
+        
+        <field name="header_spacing">0</field>
+        
+        <field name="dpi">80</field>
+    </record>
+    
+
+</odoo>

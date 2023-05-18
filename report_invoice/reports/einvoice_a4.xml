@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="cpe_a4_document">
+            <t t-call="web.basic_layout">
+                <style>
+                    .page{
+                        font-size: 14px;
+                        font-family: sans-serif;
+                    }
+
+                    .box-title{
+                        border: 3px solid #1469a4;
+                    }
+
+                    .report-logo{
+                        max-height: 125px;
+                    }
+                </style>
+
+                <t t-foreach="docs" t-as="facts">
+                    <div class="page">
+                    <!--SE SETTEA LA PRIMERA CONCATENACIÓN PARA LUEGO ESA LLAMARLA CON LA ETIQUETA T-FIELD Y CONCATENARLO CON EL CAMPO QUE SE REQUIERA 
+                    (NO HAY QUE COLOCAR LA DIRECCIÓN ORIGINAL DEL CAMPO COMPLETO) ESTA ABREVIADO ==== VER ABAJO-->
+                        <t t-set="company" t-value="facts.company_id.partner_id"/>
+                        <!--<t t-set="company_address" t-value="facts.company_id.street"/>-->
+                        <t t-set="partner" t-value="facts.partner_id.parent_id and facts.partner_id.parent_id or facts.partner_id.parent_id"/>
+                        <t t-set="partner_address" t-value="facts.partner_id"/>
+
+                        <!--DISEÑO DEL PDF-->
+                        <div class="row mb-3">
+                            <!--LOGO-->
+                            <div class="col-8 company_label p-2">
+                                <div t-if="not facts.company_id.logo">
+                                    <img class="report-logo" t-att-src="'data:image/png;base64,%s' % facts.company_id.logo.decode('utf-8')"/>
+                                </div>
+                            </div>
+                            <!--DIRECCIÓN DE COMPAÑÍA-->
+                            <div class="row">
+                                <ul class="col pl-2">
+                                    <li class="mt-1"><span t-field="company.name"/></li>
+                                    <li class="mt-1"><span t-field="company.vat"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="report_cpe_a4"
+            string="Facturación electrónica: A4"
+            model="account.move"
+            report_type="qweb-pdf"
+            name="report_invoice.cpe_a4_document"
+            file="report_invoice.cpe_a4_document"
+        />
+
+        <record id="report_cpe_a4" model="ir.actions.report">
+            <field name="paperformat_id" ref="report_invoice.a4_paper_format"/>
+        </record>
+    </data>
+    
+
+</odoo>
